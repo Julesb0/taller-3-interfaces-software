@@ -1,65 +1,84 @@
-import Image from "next/image";
-
 export default function Home() {
+  const events = [
+    {
+      id: 1,
+      date: "TODAY",
+      time: "17:00",
+      title: "Bergen International Film Festival",
+      description: "Films from all over the world gather all film enthusiasts for unique moments at the Bergen International Film Festival.",
+      bgColor: "bg-blue-100",
+    },
+    {
+      id: 2,
+      date: "22 - 31 OCT",
+      time: "10:00",
+      title: "Wool week",
+      description: "ULLVEKA 2021 will be held for the eighth time in the period 22 - 31 October 2021, and will take place in the entire Bergen region.",
+      bgColor: "bg-pink-100",
+    },
+    {
+      id: 3,
+      date: "22 - 31 OCT",
+      time: "19:00",
+      title: "Light park at Bergenhus Fortress",
+      description: "LUMAGICA - a magical experience for young and old at Bergenhus Fortress, 12 November to 19 December 2021.",
+      bgColor: "bg-orange-100",
+    },
+    {
+      id: 4,
+      date: "13 - 31 DEC",
+      time: "10:00",
+      title: "Gingerbread City 2021",
+      description: "The world's largest Gingerbread Town can be found in the Xhibition shopping center, right in the center of Bergen",
+      bgColor: "bg-green-100",
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="min-h-screen bg-blue-50 p-8">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold text-gray-800 mb-8">Events</h1>
+
+        <div className="space-y-4">
+          {events.map((event) => (
+            <div
+              key={event.id}
+              className="grid grid-cols-12 gap-4 bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              {/* Fecha y Hora - col-span-2 */}
+              <div
+                className={`col-span-2 ${event.bgColor} rounded-lg p-4 flex flex-col items-center justify-center text-center`}
+              >
+                <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                  {event.date}
+                </span>
+                <span className="text-2xl font-bold text-gray-800 mt-1">
+                  {event.time}
+                </span>
+              </div>
+
+              {/* Contenido - col-span-8 */}
+              <div className="col-span-8 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">
+                    {event.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {event.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Botón - col-span-2 */}
+              <div className="col-span-2 flex items-center justify-end">
+                <button className="bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded font-semibold transition-colors text-sm whitespace-nowrap">
+                  + Add to calendar
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }
